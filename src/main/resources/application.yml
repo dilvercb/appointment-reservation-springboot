@@ -1,0 +1,27 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:appointment_reservation
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 1234
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+security:
+  jwt:
+    key:
+      private: ${JWT_PRIVATE_KEY:appointment_reservation}
+    user:
+      generator: ${JWT_USER_GENERATOR:appointment_reservation_BACKEND}
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
