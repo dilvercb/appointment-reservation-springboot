@@ -43,6 +43,7 @@ public class SecurityConfig {
                     http.requestMatchers(HttpMethod.POST,"/auth/**").permitAll();
                     http.requestMatchers("/h2-console/**").permitAll();
                     http.requestMatchers(HttpMethod.GET,"/specialty/findAll").permitAll();
+                    http.requestMatchers(HttpMethod.GET,"/doctor/findBySpecialty/{idSpecialty}").permitAll();
                     //http.requestMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll();
 
                     //Endpoints privados

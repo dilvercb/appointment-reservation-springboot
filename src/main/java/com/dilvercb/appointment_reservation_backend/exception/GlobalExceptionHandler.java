@@ -14,4 +14,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         ErrorMessage errorMessage = new ErrorMessage(exception.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorMessage);
     }
+    @ExceptionHandler(ElementNotFoundException.class)
+    public ResponseEntity<ErrorMessage> handleElementNotFoundException(ElementNotFoundException exception){
+        ErrorMessage errorMessage = new ErrorMessage(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+    }
 }
