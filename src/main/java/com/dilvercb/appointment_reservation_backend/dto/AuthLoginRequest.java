@@ -4,9 +4,17 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public record AuthLoginRequest(
-        @NotBlank
-        @Email(message = "El correo debe tener un formato válido")
+        @NotBlank(message = "Username is required")
+        @Email(message = "Invalid email format")
         String username,
-        @NotBlank
+        @NotBlank(message = "Password is required")
         String password) {
+        public AuthLoginRequest {
+                if (username != null) {
+                        username = username.trim();
+                }
+                if (password != null) {
+                        password = password.trim();
+                }
+        }
 }

@@ -44,7 +44,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userEntityRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User "+ username + " not found."));
+                .orElseThrow(() -> new UsernameNotFoundException("User "+ username + " not found"));
 
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
 
@@ -78,10 +78,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserDetails userDetails = this.loadUserByUsername(username);
 
         if(userDetails == null){
-            throw new BadCredentialsException("Invalid username or password.");
+            throw new BadCredentialsException("Invalid username or password");
         }
         if(!passwordEncoder.matches(password, userDetails.getPassword())){
-            throw new BadCredentialsException("Invalid password.");
+            throw new BadCredentialsException("Invalid password");
         }
         return new UsernamePasswordAuthenticationToken(username, null, userDetails.getAuthorities());
     }
@@ -90,7 +90,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         String username = authCreateUserRequest.username().trim();
         if(userEntityRepository.existsByUsername(username)){
-            throw new OperationFailedException("Username " + username + " already exists.");
+            throw new OperationFailedException("Username " + username + " already exists");
         }
         Role role = roleRepository.findByRoleEnum(RoleEnum.PATIENT).orElseThrow();
 
