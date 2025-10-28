@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface DoctorService {
     List<DoctorResponse> findBySpecialty(Long idSpecialty);
+    List<DoctorResponse> findAll();
 }

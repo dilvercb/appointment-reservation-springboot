@@ -47,7 +47,8 @@ public class SecurityConfig {
                     //http.requestMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll();
 
                     //Endpoints privados
-
+                    http.requestMatchers(HttpMethod.GET,"/patient/findAll").hasRole("ADMIN");
+                    http.requestMatchers(HttpMethod.GET,"/doctor/findAll").hasRole("ADMIN");
                     //Resto de endpoints
                     http.anyRequest().denyAll();
                 })

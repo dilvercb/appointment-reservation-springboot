@@ -20,4 +20,8 @@ public class DoctorController {
     public List<DoctorResponse> findBySpecialty(@PathVariable Long idSpecialty){
         return doctorService.findBySpecialty(idSpecialty);
     }
+    @GetMapping("/findAll")
+    public List<DoctorResponse> findAll(){
+        return doctorService.findAll();
+    }
 }

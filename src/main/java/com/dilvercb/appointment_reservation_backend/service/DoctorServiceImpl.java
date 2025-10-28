@@ -27,6 +27,20 @@ public class DoctorServiceImpl implements DoctorService{
                 doctor.getLicenseNumber(),
                 doctor.getUser().getName(),
                 doctor.getUser().getLastName(),
+                doctor.getUser().getUsername(),
+                doctor.getSpecialty().getName()
+        )).toList();
+    }
+
+    @Override
+    public List<DoctorResponse> findAll() {
+        List<Doctor> doctorList = doctorRepository.findAll();
+        return doctorList.stream().map(doctor -> new DoctorResponse(
+                doctor.getId(),
+                doctor.getLicenseNumber(),
+                doctor.getUser().getName(),
+                doctor.getUser().getLastName(),
+                doctor.getUser().getUsername(),
                 doctor.getSpecialty().getName()
         )).toList();
     }
