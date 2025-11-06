@@ -49,6 +49,9 @@ public class SecurityConfig {
                     //Endpoints privados
                     http.requestMatchers(HttpMethod.GET,"/patient/findAll").hasRole("ADMIN");
                     http.requestMatchers(HttpMethod.GET,"/doctor/findAll").hasRole("ADMIN");
+                    http.requestMatchers(HttpMethod.GET,"/user/admin").hasRole("ADMIN");
+                    http.requestMatchers(HttpMethod.POST,"/doctor/save").hasRole("ADMIN");
+                    http.requestMatchers(HttpMethod.POST,"/schedule/save").hasRole("DOCTOR");
                     //Resto de endpoints
                     http.anyRequest().denyAll();
                 })
